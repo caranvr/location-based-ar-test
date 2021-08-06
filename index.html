@@ -150,24 +150,6 @@
             });
           }
         });
-
-        const scene = $('a-scene');
-
-        const latitude = data.coordinates[0];
-        const longitude = data.coordinates[1];
-
-        const icon = document.createElement('a-image');
-        icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        icon.setAttribute('click-listener', '');
-        icon.setAttribute('name', data.name);
-        icon.setAttribute('src', './img/310757_coordinates_gps_locate_location_map_icon.png');
-        icon.setAttribute('look-at', '[gps-camera]')
-
-        icon.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
-
-        console.log(icon);
-
-        scene.appendChild(icon);
              
     };
 
@@ -182,6 +164,8 @@
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
+      <a-image click-listener src="./img/310757_coordinates_gps_locate_location_map_icon.png" look-at="[gps-camera]" id="place-link" gps-entity-place="latitude: 51.56389; longitude: -0.1083333;"
+        ></a-image>
       <a-camera gps-camera rotation-reader>
         <a-cursor></a-cursor>
       </a-camera>
