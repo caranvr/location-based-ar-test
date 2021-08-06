@@ -69,8 +69,7 @@
           ev.stopPropagation();
           ev.preventDefault();
 
-          const el = ev.detail.intersection && ev.detail.intersection.object.el;
-          if (el & el === ev.target) {
+          
             //overlay div
               var content = document.createElement('div');
               content.setAttribute('id', 'overlay');
@@ -150,11 +149,9 @@
                 $('#overlay').hide();
               });
 
-          }
-
         }
 
-        icon.addEventListener('click', clickListener);
+        $('a-scene').addEventListener('click', clickListener);
 
              
     };
