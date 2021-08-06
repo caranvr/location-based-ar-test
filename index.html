@@ -165,6 +165,8 @@
 
         icon.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
 
+        console.log(icon);
+
         scene.appendChild(icon);
              
     };
