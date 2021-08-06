@@ -63,14 +63,15 @@
           'coordinates': [51.56389, -0.1083333]
         }
 
+        const icon = document.querySelector('a-image');
 
-        AFRAME.registerComponent('click-listener', {
-          init: function() {
-            this.el.addEventListener('click', function(e) {
-              
-              console.log(e.target);
+        const clickListener = function(ev) {
+          ev.stopPropagation();
+          ev.preventDefault();
 
-              //overlay div
+          const el = ev.detail.intersection && ev.detail.intersection.object.el;
+          if (el & el === ev.target) {
+            //overlay div
               var content = document.createElement('div');
               content.setAttribute('id', 'overlay');
 
@@ -148,10 +149,13 @@
               $('#btn-close').click(function(){
                 $('#overlay').hide();
               });
-              
-            });
+
           }
-        });
+
+        }
+
+        icon.addEventListener('click', clickListener);
+
              
     };
 
