@@ -68,6 +68,8 @@
           init: function() {
             this.el.addEventListener('click', function(e) {
               
+              console.log(e.target);
+
               //overlay div
               var content = document.createElement('div');
               content.setAttribute('id', 'overlay');
