@@ -151,7 +151,7 @@
 
         }
 
-        document.body.addEventListener('click', clickListener);
+        document.querySelector('a-scene').addEventListener('click', clickListener);
 
              
     };
@@ -169,7 +169,7 @@
       cursor="rayOrigin: mouse; fuse: true; fuseTimeout: 0;"
       raycaster="objects: [gps-entity-place];"
     >
-      <a-image click-listener src="./img/310757_coordinates_gps_locate_location_map_icon.png" look-at="[gps-camera]" id="place-link" gps-entity-place="latitude: 51.56389; longitude: -0.1083333;"></a-image>
+      <a-image src="./img/310757_coordinates_gps_locate_location_map_icon.png" look-at="[gps-camera]" id="place-link" gps-entity-place="latitude: 51.56389; longitude: -0.1083333;"></a-image>
       <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
 
