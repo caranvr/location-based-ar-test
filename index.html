@@ -50,6 +50,11 @@
         color: #fff;
       }
 
+      .centered {
+        position: fixed;
+        bottom: 15%;
+      }
+
     </style>
 
      <script>
@@ -63,94 +68,90 @@
           'coordinates': [51.56389, -0.1083333]
         }
 
-        AFRAME.registerComponent('markerhandler', {
 
-          init: function() {
+      //show place info when you click on the button
+      $('#more-info').click(function() {
 
-              // every click, we make our model grow in size :)
-              this.el.addEventListener('click', function(ev, target){
-                  
-                      //overlay div
-                    var content = document.createElement('div');
-                    content.setAttribute('id', 'overlay');
+        //overlay div
+        var content = document.createElement('div');
+        content.setAttribute('id', 'overlay');
 
-                      //close button
-                    var closeBtn = document.createElement('i');
-                    closeBtn.setAttribute('class', 'fa fa-times-circle');
-                    closeBtn.setAttribute('id', 'btn-close');
-                    content.appendChild(closeBtn);
+        //close button
+        var closeBtn = document.createElement('i');
+        closeBtn.setAttribute('class', 'fa fa-times-circle');
+        closeBtn.setAttribute('id', 'btn-close');
+        content.appendChild(closeBtn);
 
-                      //create text
-                    var placeText = document.createElement('div');
-                    placeText.setAttribute('id', 'text');
+        //create text
+        var placeText = document.createElement('div');
+        placeText.setAttribute('id', 'text');
                     
-                    var textTitle = document.createElement('h1');
-                    textTitle.innerText = data.name;
+        var textTitle = document.createElement('h1');
+        textTitle.innerText = data.name;
                     
-                    var textDesc = document.createElement('p');
-                    textDesc.setAttribute('id', 'desc');
-                    textDesc.innerText = data.description;
+        var textDesc = document.createElement('p');
+        textDesc.setAttribute('id', 'desc');
+        textDesc.innerText = data.description;
                     
-                    placeText.appendChild(textTitle);
-                    placeText.appendChild(textDesc);
+        placeText.appendChild(textTitle);
+        placeText.appendChild(textDesc);
 
-                    content.appendChild(placeText); //add to overlay
+        content.appendChild(placeText); //add to overlay
 
-                      //create buttons
-                    var buttonMenu = document.createElement('div');
-                    buttonMenu.setAttribute('id', 'buttons');
-                    buttonMenu.innerHTML = `<span class="material-icons" id="info">info</span>
+        //create buttons
+        var buttonMenu = document.createElement('div');
+        buttonMenu.setAttribute('id', 'buttons');
+        buttonMenu.innerHTML = `<span class="material-icons" id="info">info</span>
                           <span class="material-icons" id="quiz">quiz</span>
                           <span class="material-icons" id="reading">article</span>`
 
-                    content.appendChild(buttonMenu);
+        content.appendChild(buttonMenu);
 
-                    document.body.appendChild(content);
+        document.body.appendChild(content);
 
-                      //QUIZ QUESTIONS
-                    var questions = data.questions;
-                    var questionsList = document.createElement('ol');
+        //QUIZ QUESTIONS
+        var questions = data.questions;
+        var questionsList = document.createElement('ol');
 
-                    $.each(questions, function(i) {
-                      let q = document.createElement('li');
-                      q.innerText = questions[i];
-                      questionsList.appendChild(q);
-                    });
+        $.each(questions, function(i) {
+          let q = document.createElement('li');
+          q.innerText = questions[i];
+          questionsList.appendChild(q);
+        });
 
-                      //event listener for quiz questions
-                    $('#quiz').click(function(){
-                      textTitle.innerText = 'Questions';
-                      $('#desc').hide();
-                      placeText.appendChild(questionsList);
-                    });
+        //event listener for quiz questions
+        $('#quiz').click(function(){
+          textTitle.innerText = 'Questions';
+          $('#desc').hide();
+          placeText.appendChild(questionsList);
+        });
 
                       //event listener for info
-                    $('#info').click(function(){
-                      if (placeText.contains(questionsList)) {
-                        placeText.removeChild(questionsList);
-                        $('#desc').show();
-                      }
-                      textDesc.innerText = data.description;
-                      textTitle.innerText = data.name;
-                    });
+        $('#info').click(function(){
+          if (placeText.contains(questionsList)) {
+            placeText.removeChild(questionsList);
+            $('#desc').show();
+          }
+          textDesc.innerText = data.description;
+          textTitle.innerText = data.name;
+        });
 
                       //event listener for further reading
-                    $('#reading').click(function(){
-                      if (placeText.contains(questionsList)) {
-                        placeText.removeChild(questionsList);
-                        $('#desc').show();
-                      }
-                      textDesc.innerText = data.link;
-                      textTitle.innerText = 'Further reading';
-                    });
+        $('#reading').click(function(){
+          if (placeText.contains(questionsList)) {
+            placeText.removeChild(questionsList);
+            $('#desc').show();
+          }
+          textDesc.innerText = data.link;
+          textTitle.innerText = 'Further reading';
+        });
 
-                      //event listener for close icon
-                    $('#btn-close').click(function(){
-                      $('#overlay').hide();
-                    });
-                  }
-              });
-      }};
+          //event listener for close icon
+        $('#btn-close').click(function(){
+          $('#overlay').hide();
+        });
+        
+      });
 
 
     </script>
@@ -163,12 +164,13 @@
       vr-mode-ui="enabled: false"
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
-      cursor="rayOrigin: mouse; fuse: false;"
-      raycaster="objects: #place-link;"
     >
-      <a-image markerhandler  emitevents="true" src="./img/310757_coordinates_gps_locate_location_map_icon.png" look-at="[gps-camera]" id="place-link" gps-entity-place="latitude: 51.56389; longitude: -0.1083333;"></a-image>
+      <a-image src="./img/310757_coordinates_gps_locate_location_map_icon.png" look-at="[gps-camera]" id="place-link" gps-entity-place="latitude: 51.56389; longitude: -0.1083333;"></a-image>
       <a-camera gps-camera rotation-reader look-controls-enabled="false" arjs-look-controls="smoothingFactor: 0.1"></a-camera>
     </a-scene>
+    <div class="centered">
+      <img src="./img/325960_location_locate_marker_navigate_pin_icon.png" id="more-info" />
+    </div>
 
     
   </body>
