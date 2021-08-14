@@ -7,21 +7,52 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.3.3/aframe/build/aframe-ar-nft.js"></script>
+    <style>
+
+        .centered {
+            height: 20%;
+            justify-content: center;
+            position: fixed;
+            bottom: 0%;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            margin: 0px auto;
+            left: 0;
+            right: 0;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            background-color: transparent;
+            width: 2em;
+            height: 2em;
+            border-radius: 100%;
+            font-size: 2em;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            outline: none;
+        }
+
+    </style>
     
   </head>
 
-  <script>
+  <!--script>
     
-    AFRAME.registerComponent('clicker', {
-        init: function() {
-            this.el.addEventListener('click', e => {
-                alert("clicked");
+    //AFRAME.registerComponent('clicker', {
+      //  init: function() {
+        //    this.el.addEventListener('click', e => {
+          //      alert("clicked");
                 // console.log(key1.privatekey);
-            });
-        }
-    });
+            //});
+        //}
+    //});
 
-</script>
+</script-->
 
   <body style="margin: 0; overflow: hidden;">
     <a-scene
@@ -31,12 +62,21 @@
       cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;'
       raycaster="objects: [clickhandler];"
     >
-      <a-image clicker src="img/310757_coordinates_gps_locate_location_map_icon.png" scale="1 1 1" look-at="[gps-camera]"
+      <a-image src="img/310757_coordinates_gps_locate_location_map_icon.png" scale="1 1 1" look-at="[gps-camera]"
         gps-entity-place="latitude: 51.56395358082209; longitude: -0.10821641386856672;"
       ></a-image>
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
 
+    <div class="centered">
+        <button data-action="change"></button>
+    </div>
+
+    <script>
+         document.querySelector('button[data-action="change"]').addEventListener('click', function () {
+            alert("Clicked!")
+        });
+    </script>
 
 
   </body>
