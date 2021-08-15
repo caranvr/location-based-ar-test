@@ -21,7 +21,7 @@ window.onload = () => {
     	console.log(data.location);
 
     	//set gps position of AR image
-    	$('a-image').setAttribute('gps-entity-place', `latitude: ${data.location._latitude}; longitude: ${data.location._longitude};`);
+    	$('a-image').attr('gps-entity-place', `latitude: ${data.location._latitude}; longitude: ${data.location._longitude};`);
 
     	//overlay div
         var content = document.createElement('div');
