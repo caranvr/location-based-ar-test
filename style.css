@@ -1,0 +1,64 @@
+#overlay {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 20em;
+            left: 7%;
+            bottom: 25%;
+        }
+
+        #overlay #btn-close {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: #FFF;
+            z-index: 9999;
+          }
+
+          #text {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #FFFFFF;
+            border-radius: 12px;
+          }
+
+          #buttons {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 10px;
+          }
+
+          .material-icons {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50%;
+            color: #fff;
+          }
+
+        .centered {
+            height: 20%;
+            justify-content: center;
+            position: fixed;
+            bottom: 0%;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            margin: 0px auto;
+            left: 0;
+            right: 0;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            background-color: transparent;
+            width: 4em;
+            height: 4em;
+            border-radius: 50%;
+            font-size: 2em;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            outline: none;
+        }
