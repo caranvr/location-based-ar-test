@@ -16,6 +16,10 @@ window.onload = () => {
 
     $.getJSON(placesURL, function(data) {
 
+    	console.log(data);
+    		
+    	console.log(data.location);
+
     	//set gps position of AR image
     	$('a-image').setAttribute('gps-entity-place', `latitude: ${data.location._latitude}; longitude: ${data.location._longitude};`);
 
