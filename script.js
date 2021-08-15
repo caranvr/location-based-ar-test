@@ -20,13 +20,23 @@ window.onload = () => {
     		
     	console.log(data.location);
 
-    	//set gps position of AR image
-    	var img = document.getElementsByTagName("a-image");
-    	console.log(img);
-    	var gpsString = `latitude: ${data.location._latitude}; longitude: ${data.location._longitude};`;
-    	console.log(img[0]);
-    	console.log(gpsString);
-    	img[0].setAttribute('gps-entity-place', gpsString);
+    	//create image element
+    	let lat = data.location._latitude;
+    	let lon = data.location._longitude;
+    	let scene = document.querySelector('a-scene');
+
+    	let img = document.createElement('a-image');
+    	img.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lon}`);
+    	img.setAttribute('src', 'img/310757_coordinates_gps_locate_location_map_icon.png');
+    	img.setAttribute('scale', '0.5 0.5 0.5');
+    	img.setAttribute('look-at', '[gps-camera]');
+
+    	img.addEventListener('loaded', () => {
+            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+        });
+
+        scene.appendChild(img);
+
 
     	//event listener for button: generate overlay
     	infoBtn.addEventListener('click', function () { 
