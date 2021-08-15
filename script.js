@@ -25,6 +25,7 @@ window.onload = () => {
     	console.log(img);
     	var gpsString = `latitude: ${data.location._latitude}; longitude: ${data.location._longitude};`;
     	console.log(img[0]);
+    	console.log(gpsString);
     	img[0].setAttribute('gps-entity-place', gpsString);
 
     	//event listener for button: generate overlay
