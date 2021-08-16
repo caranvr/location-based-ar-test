@@ -15,6 +15,9 @@ window.onload = () => {
     // the value below will be replaced by a function return the url of all avaiable places
     var placesURL = `https://smartwalks-test-proxy.herokuapp.com/http://smartwalks.cetools.org/api/v1/place/${placeID}`
 
+    var img;
+    var gpsDebug;
+
     $.getJSON(placesURL, function(data) {
 
     	console.log(data);
@@ -26,13 +29,13 @@ window.onload = () => {
     	let lon = data.location._longitude;
     	let scene = document.querySelector('a-scene');
 
-    	let img = document.createElement('a-image');
+    	img = document.createElement('a-image');
     	img.setAttribute('src', 'img/310757_coordinates_gps_locate_location_map_icon.png');
     	img.setAttribute('scale', '0.5 0.5 0.5');
     	img.setAttribute('look-at', '[gps-camera]');
     	img.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lon};`);
     	
-    	let gpsDebug = img.getAttribute('gps-entity-place'); //debug
+    	gpsDebug = img.getAttribute('gps-entity-place'); //debug
 
 
     	img.addEventListener('loaded', () => {
