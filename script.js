@@ -27,10 +27,10 @@ window.onload = () => {
     	let scene = document.querySelector('a-scene');
 
     	let img = document.createElement('a-image');
-    	img.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lon}`);
     	img.setAttribute('src', 'img/310757_coordinates_gps_locate_location_map_icon.png');
     	img.setAttribute('scale', '0.5 0.5 0.5');
     	img.setAttribute('look-at', '[gps-camera]');
+    	img.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lon};`);
 
     	img.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
