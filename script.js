@@ -1,5 +1,3 @@
-let firstLoc = true;
-
 window.onload = () => { 
 
 	//create button div
@@ -11,12 +9,7 @@ window.onload = () => {
     centered.appendChild(infoBtn); //add button to div
     document.body.appendChild(centered); //add div + button to body
 
-    window.addEventListener('gps-camera-update-position', e => {
-    	if (firstLoc) {
-    		firstLoc = false;
-    		loadPlace();
-    	}
-    });
+    loadPlace();
 
     //event listener for button
     $('body').on('click', '#info-btn', function(){
@@ -25,6 +18,7 @@ window.onload = () => {
 
 };
 
+//ADDS A-IMAGE ELEMENT AND OVERLAY WITH PLACE INFO TO PAGE
 function loadPlace() {
     //call places API based on ID
     var placeID = 'edyS0koKFMVeTh4KaXbC';
