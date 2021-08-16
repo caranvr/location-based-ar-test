@@ -4,6 +4,7 @@ window.onload = () => {
 	var centered = document.createElement('div'); //div
     centered.setAttribute('class', 'centered');
     var infoBtn = document.createElement('button'); //button
+    infoBtn.setAttribute('id', 'info-btn');
     infoBtn.setAttribute('data-action', 'change');
     centered.appendChild(infoBtn); //add button to div
     document.body.appendChild(centered); //add div + button to body
@@ -37,91 +38,89 @@ window.onload = () => {
 
         scene.appendChild(img);
 
-
-    	//event listener for button: generate overlay
-    	infoBtn.addEventListener('click', function () { 
-    		//overlay div
-	        var content = document.createElement('div');
-	        content.setAttribute('id', 'overlay');
+        //CREATE OVERLAY
+        var content = document.createElement('div');
+        content.setAttribute('class', 'hide');
+	    content.setAttribute('id', 'overlay');
 
 	        //close button
-	        var closeBtn = document.createElement('i');
-	        closeBtn.setAttribute('class', 'fa fa-times-circle');
-	        closeBtn.setAttribute('id', 'btn-close');
-	        content.appendChild(closeBtn);
+	    var closeBtn = document.createElement('i');
+	    closeBtn.setAttribute('class', 'fa fa-times-circle');
+	    closeBtn.setAttribute('id', 'btn-close');
+	    content.appendChild(closeBtn);
 
 	        //create text
-	        var placeText = document.createElement('div');
-	        placeText.setAttribute('id', 'text');
-	        var textTitle = document.createElement('h1');
-	        textTitle.innerText = data.name;
-	        var textDesc = document.createElement('p');
-	        textDesc.setAttribute('id', 'desc');
-	        textDesc.innerText = data.description;
-	        placeText.appendChild(textTitle);
-	        placeText.appendChild(textDesc);
+	    var placeText = document.createElement('div');
+	    placeText.setAttribute('id', 'text');
+	    var textTitle = document.createElement('h1');
+	    textTitle.innerText = data.name;
+	    var textDesc = document.createElement('p');
+	    textDesc.setAttribute('id', 'desc');
+	    textDesc.innerText = data.description;
+	    placeText.appendChild(textTitle);
+	    placeText.appendChild(textDesc);
 
-	        content.appendChild(placeText); //add to overlay
+	    content.appendChild(placeText); //add to overlay
 
 	        //create buttons
-	        var buttonMenu = document.createElement('div');
-	        buttonMenu.setAttribute('id', 'buttons');
-	        buttonMenu.innerHTML = `<span class="material-icons" id="info">info</span>
+	    var buttonMenu = document.createElement('div');
+	    buttonMenu.setAttribute('id', 'buttons');
+	    buttonMenu.innerHTML = `<span class="material-icons" id="info">info</span>
 	                  <span class="material-icons" id="quiz">quiz</span>
 	                  <span class="material-icons" id="reading">article</span>`
 
-	        content.appendChild(buttonMenu);
+	    content.appendChild(buttonMenu);
 
-	        document.body.appendChild(content);
+	    document.body.appendChild(content);
 
 	        //QUIZ QUESTIONS
-	        var questions = data.questions;
-	        var questionsList = document.createElement('ol');
+	    var questions = data.questions;
+	    var questionsList = document.createElement('ol');
 
-	        $.each(questions, function(i) {
-	        	let q = document.createElement('li');
-	            q.innerText = questions[i];
-	            questionsList.appendChild(q);
-	         });
+	    $.each(questions, function(i) {
+	        let q = document.createElement('li');
+	        q.innerText = questions[i];
+	        questionsList.appendChild(q);
+	     });
 
 	              //event listener for quiz questions
-	         $('#quiz').click(function(){
-	            textTitle.innerText = 'Questions';
-	            $('#desc').hide();
-	            placeText.appendChild(questionsList);
-	         });
+	    $('#quiz').click(function(){
+	        textTitle.innerText = 'Questions';
+	        $('#desc').hide();
+	        placeText.appendChild(questionsList);
+	     });
 
 	              //event listener for info
-	         $('#info').click(function(){
-	            if (placeText.contains(questionsList)) {
-	            	placeText.removeChild(questionsList);
-	                $('#desc').show();
-	             }
-	             textDesc.innerText = data.description;
-	             textTitle.innerText = data.name;
-	          });
+	    $('#info').click(function(){
+	        if (placeText.contains(questionsList)) {
+	           	placeText.removeChild(questionsList);
+	            $('#desc').show();
+	        }
+	        textDesc.innerText = data.description;
+	        textTitle.innerText = data.name;
+	     });
 
 	              //event listener for further reading
-	          $('#reading').click(function(){
-	            if (placeText.contains(questionsList)) {
-	                placeText.removeChild(questionsList);
-	                $('#desc').show();
-	             }
-	             textDesc.innerText = data.link;
-	             textTitle.innerText = 'Further reading';
-	           });
+	    $('#reading').click(function(){
+	       if (placeText.contains(questionsList)) {
+	            placeText.removeChild(questionsList);
+	            $('#desc').show();
+	        }
+	        textDesc.innerText = data.link;
+	        textTitle.innerText = 'Further reading';
+	     });
 
-	              //event listener for close icon
-	           $('#btn-close').click(function(){
-	             $('#overlay').hide();
-	           });
-    		
-    		});
-    	
+	    //event listener for close icon
+	    $('#btn-close').click(function(){
+	        $('#overlay').addClass('hide');
+	     });
 
-      });
+	});
 
-
+	//event listener for button
+    $('body').on('click', '#info-btn', function(){
+    	$('#overlay').removeClass('hide');
+    });
 }
 
 
