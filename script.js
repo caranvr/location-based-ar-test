@@ -1,3 +1,5 @@
+let firstLoc = true;
+
 window.onload = () => { 
 
 	//create button div
@@ -9,14 +11,27 @@ window.onload = () => {
     centered.appendChild(infoBtn); //add button to div
     document.body.appendChild(centered); //add div + button to body
 
+    window.addEventListener('gps-camera-update-position', e => {
+    	if (firstLoc) {
+    		firstLoc = false;
+    		loadPlace();
+    	}
+    });
+
+    //event listener for button
+    $('body').on('click', '#info-btn', function(){
+    	$('#overlay').removeClass('hide');
+    });
+
+};
+
+function loadPlace() {
     //call places API based on ID
     var placeID = 'edyS0koKFMVeTh4KaXbC';
 
     // the value below will be replaced by a function return the url of all avaiable places
     var placesURL = `https://smartwalks-test-proxy.herokuapp.com/http://smartwalks.cetools.org/api/v1/place/${placeID}`
     
-    var gpsDebug;
-
     $.getJSON(placesURL, function(data) {
 
     	console.log(data);
@@ -26,9 +41,9 @@ window.onload = () => {
     	//create image element
     	let lat = data.location._latitude;
     	let lon = data.location._longitude;
-    	let scene = document.querySelector('a-scene');
+    	let scene = document.querySelector("a-scene");
 
-    	const img = document.createElement('a-image');
+    	const img = document.createElement("a-image");
     	img.setAttribute('src', 'img/310757_coordinates_gps_locate_location_map_icon.png');
     	img.setAttribute('scale', {
     		x: 0.5, 
@@ -41,14 +56,12 @@ window.onload = () => {
     		longitude: lon
     	});
     	
-    	gpsDebug = img.getAttribute('gps-entity-place'); //debug
 
     	img.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
 
         scene.appendChild(img);
-        console.log(gpsDebug); //debug
 
         //CREATE OVERLAY
         var content = document.createElement('div');
@@ -128,11 +141,6 @@ window.onload = () => {
 	     });
 
 	});
-
-	//event listener for button
-    $('body').on('click', '#info-btn', function(){
-    	$('#overlay').removeClass('hide');
-    });
-}
+};
 
 
