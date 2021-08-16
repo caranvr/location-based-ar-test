@@ -32,11 +32,13 @@ window.onload = () => {
     	img.setAttribute('look-at', '[gps-camera]');
     	img.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lon};`);
 
+
     	img.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
 
         scene.appendChild(img);
+        console.log(img.getAttribute('gps-entity-place')); //debug
 
         //CREATE OVERLAY
         var content = document.createElement('div');
