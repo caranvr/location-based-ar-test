@@ -41,7 +41,7 @@ function loadPlace() {
     	//create image element
     	let lat = data.location._latitude;
     	let lon = data.location._longitude;
-    	let scene = document.querySelector("a-scene");
+    	const scene = document.querySelector("a-scene");
 
     	const img = document.createElement("a-image");
     	img.setAttribute('src', 'img/310757_coordinates_gps_locate_location_map_icon.png');
