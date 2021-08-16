@@ -35,7 +35,7 @@ window.onload = () => {
     		y: 0.5,
     		z: 0.5
     	});
-    	img.setAttribute('look-at', {[gps-camera]});
+    	img.setAttribute('look-at', '[gps-camera]');
     	img.setAttribute('gps-entity-place', {
     		latitude: lat, 
     		longitude: lon
