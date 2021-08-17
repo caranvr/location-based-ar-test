@@ -13,6 +13,7 @@ window.onload = () => {
 
     //event listener for button
     $('body').on('click', '#info-btn', function(){
+    	$('#instructions').addClass('hide');
     	$('#overlay').removeClass('hide');
     });
 
