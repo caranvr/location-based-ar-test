@@ -2,6 +2,13 @@
           display: none !important; 
         }
 
+        #close-frame {
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            z-index: 10;
+        }
+
         #overlay {
             display: flex;
             flex-direction: column;

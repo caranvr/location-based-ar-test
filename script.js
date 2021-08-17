@@ -21,9 +21,8 @@ window.onload = () => {
 //ADDS A-IMAGE ELEMENT AND OVERLAY WITH PLACE INFO TO PAGE
 function loadPlace() {
     //call places API based on ID
-    var placeID = 'edyS0koKFMVeTh4KaXbC';
+    var placeID = 'edyS0koKFMVeTh4KaXbC'; //in the final version this will be taken from the URL string
 
-    // the value below will be replaced by a function return the url of all avaiable places
     var placesURL = `https://smartwalks-test-proxy.herokuapp.com/http://smartwalks.cetools.org/api/v1/place/${placeID}`
     
     $.getJSON(placesURL, function(data) {
