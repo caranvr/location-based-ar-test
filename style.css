@@ -64,7 +64,9 @@
         #instructions {
             position: fixed;
             bottom: 30%;
-            display: block;
+            display: flex;
+            justify-content: center;
+            color: #FFFFFF;
         }
 
         button {
