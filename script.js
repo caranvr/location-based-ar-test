@@ -1,13 +1,13 @@
 window.onload = () => { 
 
 	//create button div
-	var centered = document.createElement('div'); //div
-    centered.setAttribute('class', 'centered');
-    var infoBtn = document.createElement('button'); //button
-    infoBtn.setAttribute('id', 'info-btn');
-    infoBtn.setAttribute('data-action', 'change');
-    centered.appendChild(infoBtn); //add button to div
-    document.body.appendChild(centered); //add div + button to body
+	//var centered = document.createElement('div'); //div
+    //centered.setAttribute('class', 'centered');
+    //var infoBtn = document.createElement('button'); //button
+    //infoBtn.setAttribute('id', 'info-btn');
+    //infoBtn.setAttribute('data-action', 'change');
+    //centered.appendChild(infoBtn); //add button to div
+    //document.body.appendChild(centered); //add div + button to body
 
     loadPlace();
 
