@@ -67,6 +67,7 @@
             display: flex;
             justify-content: center;
             color: #FFFFFF;
+            width: 100%;
         }
 
         button {
