@@ -68,6 +68,8 @@
             justify-content: center;
             color: #FFFFFF;
             width: 100%;
+            text-align: center;
+            padding: 10%;
         }
 
         button {
