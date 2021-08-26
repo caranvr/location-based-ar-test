@@ -76,6 +76,8 @@
         #instructions {
             display: flex;
             justify-content: center;
+            align-items: flex-end;
+            text-shadow: 0.5px 0.5px #000000;
             color: #FFFFFF;
             width: 100%;
             text-align: center;
