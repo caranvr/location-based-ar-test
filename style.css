@@ -77,7 +77,8 @@
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            text-shadow: 0.5px 0.5px #000000;
+            text-shadow: 1px 1px #000000;
+            font-weight: 500;
             color: #FFFFFF;
             width: 100%;
             text-align: center;
